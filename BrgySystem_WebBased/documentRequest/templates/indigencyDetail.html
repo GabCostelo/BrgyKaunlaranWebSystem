@@ -1,0 +1,58 @@
+{% extends "Staff_base.html"%}
+{% load static %}
+{% block content %}
+<div class="container-postdetail" style="margin:50px 50px 50px 50px" >
+  <div class="row">
+      <div class="col-md-8" >
+        <h1>Review Details</h1>
+        <br>
+        <ul>
+          <li><h4>Name: </h4></li>
+            <ul>
+              <li><h5>{{object.first_name}} {{object.middle_name}} {{object.last_name}}</h5></li>
+            </ul>
+            <li><h4>Age:</h4> </li>
+            <ul>
+              <li><h5>{{object.age}} yrs. old</h5></li>
+            </ul>
+            <li><h4>Email:</h4> </li>
+            <ul>
+              <li><h5>{{object.email}}</h5></li>
+            </ul>
+            <li><h4>Address: </h4></li>
+            <ul>
+              <li><h5>{{object.Address}}</h5></li>
+            </ul>
+            <li><h4>Nationality: </h4> </li>
+            <ul>
+              <li><h5>{{object.nationality}}</h5></li>
+            </ul>
+            <li><h4>Purpose: </h4> </li>
+            <ul>
+              <li><h5>{{object.purpose}}</h5></li>
+            </ul>
+            <li><h4>Requirements: </h4> </li>
+            <ul>
+              <li><h5>Cedula</h5></li>
+                <ul>
+                  <li><a href="{{object.cedula.url}}" class="btn btn-primary">View Cedula</a></li><br>
+                </ul>
+              <li><h5>View Valid ID</h5></li>
+                <ul>
+                  <li><a href="{{object.validId.url}}" class="btn btn-primary">View ID</a></li><br>
+                </ul>
+              <li><h5>Other type of Document</h5></li>
+                <ul>
+                  <li><a href="{{object.otherDocument.url}}" class="btn btn-primary">View Other Requirement</a></li>
+                </ul>
+            </ul>
+        </ul>
+        <br>
+
+        <a href="{%url 'documentRequest:sendUpdateInd' object.pk%}" class="btn btn-success">Send Update</a>
+        <a href="{%url 'documentRequest:generatePdf' object.pk%}" class="btn btn-secondary">Print Document</a>
+        <a href="{%url 'documentRequest:updateReq' object.pk%}" class="btn btn-success">Done</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
